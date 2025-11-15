@@ -11,25 +11,28 @@ using namespace std;
 
 class search {
     private:
-        vector<string> l;
+        const Add_Product& products;
 
     public:
-        search(const vector<string>& product)
-            : l(product) {}
+
+        search(const Add_Product& ref)
+            : products(ref) {}
 
         bool FindProduct(const string& name) const{
-            return find(l.begin(), l.end(), name) != l.end();
+            const auto& list = products.getList();
+            return find(list.begin(), list.end(), name) != list.end();
         }
 
         void FindAndPrint(const string& name) const{
-            if(FindAndPrint(name)) {
+            if(FindProduct(name)) {
                 cout << "Produto " << name << " encontrado no inventário.\n";
             }
             else {
-                cout << "Fora de esto ou não encontrado!\n";
+                cout << "Fora de estoque ou não encontrado!\n";
             }
         }
 
-}
+
+};
 
 #endif
