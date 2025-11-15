@@ -1,22 +1,24 @@
-#ifndef PRODUTOS_HPP
-#define PRODUTOS_HPP
+#ifndef ADD_HPP
+#define ADD_HPP
 
+#include <cstddef>
 #include <iostream>
 #include <vector>
-#inlcude <string>
+#include <string>
 
 using namespace std;
 
-class products {
+class Add_Product {
     private:
         vector<string> list;
 
     public:
+
         void Add(const string& product) {
             list.push_back(product);
         }
 
-        void Remove_Last() const {
+        void Remove_Last() {
             if(!list.empty()) {
                 list.pop_back();
             }
@@ -26,14 +28,12 @@ class products {
         }
 
         void Remove_All() {
-            for(int i = 0; i < list.size(); i++) {
-                list.pop_back();
-            }
-            cout << "Sem estoque!"
+            list.clear();
+            cout << "Sem estoque!";
         }
 
         void List() {
-            for(int i = 0; i < list.size(); i++) {
+            for(size_t i = 0; i < list.size(); i++) {
                 cout << "- " << list[i] << " -" << "\n";
             }
         }
@@ -51,6 +51,10 @@ class products {
             }
 
         }
-}
+        //Getter
+        const vector<string>& getList() const {
+            return list;
+        }
+};
 
 #endif
